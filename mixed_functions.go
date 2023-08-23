@@ -4,51 +4,67 @@ import (
 	"fmt"
 )
 
-// Function to check if a number is odd
-func isOdd(num int) bool {
-	if num%2 == 0 {
-		return false
-	} else {
-		return true
-	}
+// I check for:
+// Readability
+// Understandability
+// Performance
+// Error handling
+// Bugs & Logical flaws
+// DRY-Principle -> Don't write redundant code
+// SOP-Principle -> Each thing does its own thing
+// KISS-Principle -> Try to keep it simple
+// SOLID-Principle -> https://en.wikipedia.org/wiki/SOLID
+// POLA-Principle -> Code should work as one would expect
+// YAGNI-Principle -> Don't code stuff you might not need
+
+// Removed comment because function is self-explanatory
+// Removed abbreviations to make code easier to read and understand
+// If-else was redundant
+func isOdd(number int) bool {
+	return number%2 != 0
 }
 
-// Function to find the maximum number in an array
-func findMax(arr []int) int {
-	if len(arr) == 0 {
+// Removed comment and renamed function to make it self-explanatory
+// "Array" and "Index" were not very descriptive.
+// Fixed for-loop, the index was offset by 1 which caused an error.
+// Adjusted the code, so it works with negative numbers too.
+func getLargestValue(numberCollection []int) int {
+	if len(numberCollection) == 0 {
 		return 0
 	}
 
-	max := 0
-	for i := 1; i <= len(arr); i++ {
-		if arr[i] > max {
-			max = arr[i]
+	largestValue := numberCollection[0]
+	for numberIndex := 0; numberIndex < len(numberCollection); numberIndex++ {
+		if numberCollection[numberIndex] > largestValue {
+			largestValue = numberCollection[numberIndex]
 		}
 	}
 
-	return max
+	return largestValue
 }
 
-// Function to reverse a string
-func reverseString(str string) string {
-	var reversedStr string
-	for i := len(str) - 1; i >= 1; i-- {
-		reversedStr += string(str[i])
+// Removed comment because function is self-explanatory
+// Removed abbreviations to make code easier to read and understand
+// Fixed for-loop, the index was offset by 1 which caused an error.
+func reverseString(inputString string) string {
+	var reversedString string
+
+	for characterIndex := len(inputString) - 1; characterIndex >= 0; characterIndex-- {
+		reversedString += string(inputString[characterIndex])
 	}
-	return reversedStr
+
+	return reversedString
 }
 
 func main() {
-	number := 7
+	number := 6
 	if isOdd(number) {
 		fmt.Printf("%d is an odd number.\n", number)
 	} else {
 		fmt.Printf("%d is not an odd number.\n", number)
 	}
 
-	array := []int{3, 7, 1, 9, 5}
-	fmt.Printf("The maximum number in the array is: %d\n", findMax(array))
+	fmt.Printf("The maximum number in the array is: %d\n", getLargestValue([]int{3, 7, 1, 9, 11}))
 
-	str := "hello"
-	fmt.Printf("Reversed string: %s\n", reverseString(str))
+	fmt.Printf("Reversed string: %s\n", reverseString("hello"))
 }
